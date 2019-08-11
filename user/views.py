@@ -1,9 +1,8 @@
-from django.shortcuts import render
-from rest_framework import viewsets
-from .models import User 
-from .userSerializer import UserSerializer
+from rest_auth.views import LoginView
 
-class UserViewSet(viewsets.ModelViewSet):
-	queryset = User.objects.all()
-	serializer_class = UserSerializer		
 
+class UserViewSet(LoginView):
+
+    def get_response(self):
+        original_response = super().get_response()
+        return original_response
