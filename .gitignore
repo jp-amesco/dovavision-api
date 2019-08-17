@@ -1,0 +1,7 @@
+* .pyc
+* ~
+__pycache__
+minha vida
+db.sqlite3
+/ estático
+.DS_Store
