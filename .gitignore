@@ -1,7 +1,7 @@
-* .pyc
-* ~
+*.pyc
+*~
 __pycache__
-minha vida
+myenv
 db.sqlite3
-/ estático
+/static
 .DS_Store
