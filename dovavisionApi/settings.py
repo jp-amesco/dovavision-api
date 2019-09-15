@@ -41,18 +41,33 @@ INSTALLED_APPS = [
     #rest framework apps
     'rest_framework', 
     'oauth2_provider',
+    'django_extensions',
+    'corsheaders',
 
     #my apps
     'user',
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': ('oauth2_provider.contrib.rest_framework.OAuth2Authentication',),
+    'DEFAULT_AUTHENTICATION_CLASSES' : (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication' ,
+        'rest_framework.authentication.SessionAuthentication' ,
+    ),
+    'DEFAULT_PERMISSION_CLASSES' : (
+        'rest_framework.permissions.IsAuthenticated' ,
+    ),
 }
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'oauth2_provider.backends.OAuth2Backend',
+    # Uncomment following if you want to access the admin
+)
 
 OAUTH2_PROVIDER = {
     'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'},
     'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,
+    'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore',
 }
 
 MIDDLEWARE = [
@@ -63,6 +78,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
 ]
 
 ROOT_URLCONF = 'dovavisionApi.urls'
@@ -83,6 +102,11 @@ TEMPLATES = [
     },
 ]
 
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000'
+]
+
+
 WSGI_APPLICATION = 'dovavisionApi.wsgi.application'
 
 
@@ -92,9 +116,11 @@ WSGI_APPLICATION = 'dovavisionApi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': '/etc/mysql/my.cnf',
-        }
+        'NAME': 'dovavision',                 
+        'USER': 'joao',
+        'PASSWORD': 'root',
+        '0HOST': 'localhost',                 
+        'PORT': '3306',           
     }
 }
 
