@@ -116,9 +116,9 @@ WSGI_APPLICATION = 'dovavisionApi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dovavision',                 
-        'USER': 'joao',
-        'PASSWORD': 'root',
+        'NAME': 'dovavision',
+        'USER': 'root',
+        'PASSWORD': '123',
         '0HOST': 'localhost',                 
         'PORT': '3306',           
     }
