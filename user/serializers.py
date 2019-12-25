@@ -1,18 +1,9 @@
 from rest_framework import serializers
-from . import models 
+from .models import User
+from .DynamicFieldsModelSerializer import DynamicFieldsModelSerializer 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(DynamicFieldsModelSerializer):
     class Meta:
-        model = models.User
+        model = User
         fields = '__all__'
-
-    def create(self, validated_data):
-        user = models.User.objects.create_user(
-            email=validated_data['email'],
-            name=validated_data['name'],
-            date_of_birth=validated_data['date_of_birth'],
-            password=validated_data['password']
-        )
-        return user
-
-        
+        read_only_field = ['id']
