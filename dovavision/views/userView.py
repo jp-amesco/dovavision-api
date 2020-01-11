@@ -1,9 +1,9 @@
-from .models import User
+from ..models import User, Company
 from rest_framework import status
 from rest_framework import viewsets
-from .serializers import UserSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from ..serializers.userSerializer import UserSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -18,7 +18,7 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @api_view(['PATCH', 'GET'])
-    def user(request, pk): 
+    def show_or_update(request, pk): 
         user = User.objects.get(id=pk)
         if request.method == 'GET':
             serializer = UserSerializer(user)
@@ -30,4 +30,11 @@ class UserViewSet(viewsets.ModelViewSet):
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-                
+
+    @api_view(['POST'])
+    def favourite_company(request):
+        user = request.user
+        company_id = request.data['id_company']
+        company = Company.objects.get(id=company_id)
+        response = user.company_set.add(company)
+        return Response(response, status=status.HTTP_200_OK)
