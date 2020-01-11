@@ -51,3 +51,12 @@ class User(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+class Company(models.Model):
+    name = models.CharField(max_length=50)
+    country = models.CharField(max_length=50)
+    is_active = models.BooleanField(default=True)
+    user = models.ManyToManyField(User)
+
+    def __str__(self):
+        return self.name

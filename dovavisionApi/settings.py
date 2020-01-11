@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     #my apps
-    'user',
+    'dovavision',
 ]
 
 REST_FRAMEWORK = {
@@ -127,7 +127,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL='user.User'
+AUTH_USER_MODEL='dovavision.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
