@@ -37,7 +37,7 @@ class UserViewSet(viewsets.ModelViewSet):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @api_view(['POST'])
-    def favourite_stock(request):
+    def add_favourite_stock(request):
         user = request.user
         stock_id = request.data['stock_id']
         try:
@@ -47,3 +47,20 @@ class UserViewSet(viewsets.ModelViewSet):
 
         response = user.stock_set.add(stock)
         return Response(response, status=status.HTTP_200_OK)
+
+    @api_view(['POST'])
+    def remove_favourite_stock(request):
+        user = request.user
+        stock_id = request.data['stock_id']
+        try:
+            stock = Stock.objects.get(id=stock_id)
+        except Stock.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        response = user.stock_set.remove(stock)
+        return Response(response, status=status.HTTP_200_OK)
+
+    @api_view(['GET'])
+    def current_user(request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data, status=status.HTTP_200_OK)

@@ -4,7 +4,7 @@ from stock.serializers.stockSerializer import StockSerializer
 from ..DynamicFieldsModelSerializer import DynamicFieldsModelSerializer 
 
 class UserSerializer(DynamicFieldsModelSerializer):
-    stock_set = StockSerializer(many=True)
+    stock_set = StockSerializer(many=True, read_only=True)
 
     class Meta:
         model = User

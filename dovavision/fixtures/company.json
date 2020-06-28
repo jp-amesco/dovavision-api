@@ -1,0 +1,34 @@
+[
+    {
+        "model": "dovavision.company",
+        "pk": 1,
+        "fields": {
+            "name": "Magazine Luiza",
+            "country": "Brasil"
+        }
+    },
+    {
+        "model": "dovavision.company",
+        "pk": 2,
+        "fields": {
+            "name": "Petrobras",
+            "country": "Brasil"
+        }
+    },
+    {
+        "model": "dovavision.company",
+        "pk": 3,
+        "fields": {
+            "name": "Banco Inter",
+            "country": "Brasil"
+        }
+    },
+    {
+        "model": "dovavision.company",
+        "pk": 4,
+        "fields": {
+            "name": "Banco do Brasil",
+            "country": "Brasil"
+        }
+    }
+]

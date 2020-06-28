@@ -1,0 +1,42 @@
+[
+    {
+        "model": "stock.stock",
+        "pk": 1,
+        "fields": {
+            "name": "MGLU3",
+            "api_name": "MGLU3.SA",
+            "index_id": 1,
+            "company_id": 1
+        }
+    },
+    {
+        "model": "stock.stock",
+        "pk": 2,
+        "fields": {
+            "name": "PETR4",
+            "api_name": "PETR4.SA",
+            "index_id": 1,
+            "company_id": 2
+        }
+    },
+    {
+        "model": "stock.stock",
+        "pk": 3,
+        "fields": {
+            "name": "BIDI4",
+            "api_name": "BIDI4.SA",
+            "index_id": 1,
+            "company_id": 3
+        }
+    },
+    {
+        "model": "stock.stock",
+        "pk": 4,
+        "fields": {
+            "name": "BBAS3",
+            "api_name": "BBAS3.SA",
+            "index_id": 1,
+            "company_id": 4
+        }
+    }
+]

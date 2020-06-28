@@ -1,0 +1,12 @@
+[
+    {
+        "model": "stock.index",
+        "pk": 1,
+        "fields": {
+            "name": "Ibovespa",
+            "code": "IBOV",
+            "api_name": "IBOV.SA",
+            "country": "Brasil"
+        }
+    }
+]
